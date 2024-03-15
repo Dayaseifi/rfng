@@ -1,4 +1,7 @@
-export function fileNameGenerator(fileName : string) {
+export function fileNameGenerator(fileName: string) {
+    if (!fileName.trim()) {
+        throw new TypeError('Filename must not be empty or contain only whitespace.');
+    }
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
