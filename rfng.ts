@@ -1,10 +1,11 @@
 /**
  * Generates a unique file name with a timestamp prefix.
  * @param fileName The base file name.
+ * @param shortYear If true, the function will use a two-digit representation for the year.
  * @returns A string representing the generated file name.
  * @throws {TypeError} If the provided file name is empty or contains only whitespace.
  */
-export function fileNameGenerator(fileName: string): string {
+function fileNameGenerator(fileName: string, shortYear: boolean = true): string {
     // Check if fileName is empty or contains only whitespace
     if (!fileName.trim()) {
         throw new TypeError('Filename must not be empty or contain only whitespace.');
@@ -12,7 +13,7 @@ export function fileNameGenerator(fileName: string): string {
 
     // Generate current timestamp
     const currentDate = new Date();
-    const year = currentDate.getFullYear();
+    const year = shortYear ? String(currentDate.getFullYear()).slice(-2) : currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
     const hour = String(currentDate.getHours()).padStart(2, '0');
