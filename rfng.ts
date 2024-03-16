@@ -29,3 +29,4 @@ function fileNameGenerator(fileName: string, shortYear: boolean = true): string 
     // Concatenate formatted date and file name
     return `${formattedDate}_${fileName}`;
 }
+
